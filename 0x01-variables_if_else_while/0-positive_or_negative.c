@@ -4,7 +4,6 @@
 /* more headers goes there */
 
 /* betty style doc for function main goes there */
-/* This program generates a random number and determines if it is positive, negative, or zero. */
 int main(void)
 {
 int n;
