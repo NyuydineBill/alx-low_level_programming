@@ -17,11 +17,11 @@ printf("The string Last digit of %d is ", n);
 
 if (lastDigit > 5)
 {
-    printf("and is greater than 5\n");
+printf("and is greater than 5\n");
 }
 else if (lastDigit == 0)
 {
-    printf("and is 0\n");
+printf("and is 0\n");
 }
 else
 {
@@ -29,4 +29,5 @@ else
 }
 
 return (0);
-}}
+}
+
