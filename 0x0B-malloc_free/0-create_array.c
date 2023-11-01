@@ -6,7 +6,7 @@
  * @size: size of array
  * @c: char to assign
  *
- * Description: create an array of size 'size' and assign char 'c' to each element
+ * Description: create an array of size 'size' and assign char'c'toeachelement
  * Return: pointer to the array, NULL if failed
  */
 char *create_array(unsigned int size, char c)
