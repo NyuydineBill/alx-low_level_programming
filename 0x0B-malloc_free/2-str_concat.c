@@ -2,51 +2,51 @@
 #include <stdlib.h>
 
 /**
- * str_concat - get ends of input and add together for size
- * @s1: input one to concat
- * @s2: input two to concat
- * Return: concat of s1 and s2
+ * str_concat - concatenate two strings
+ * @s1: first input string
+ * @s2: second input string
+ *
+ * Return: pointer to the concatenated string, NULL if failed
  */
 char *str_concat(char *s1, char *s2)
 {
-    char *conct;
-    int i, ci;
-    
-    if (s1 == NULL)
-        s1 = "";
-    if (s2 == NULL)
-        s2 = "";
+	char *concatenated;
+	int i, j;
 
-    i = 0;
-    ci = 0;
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 
-    while (s1[i] != '\0')
-        i++;
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
 
-    while (s2[ci] != '\0')
-        ci++;
+	j = 0;
+	while (s2[j] != '\0')
+		j++;
 
-    conct = malloc(sizeof(char) * (i + ci + 1));
+	concatenated = malloc(sizeof(char) * (i + j + 1));
 
-    if (conct == NULL)
-        return (NULL);
+	if (concatenated == NULL)
+		return (NULL);
 
-    i = 0;
-    while (s1[i] != '\0')
-    {
-        conct[i] = s1[i];
-        i++;
-    }
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		concatenated[i] = s1[i];
+		i++;
+	}
 
-    ci = 0;
-    while (s2[ci] != '\0')
-    {
-        conct[i] = s2[ci];
-        i++;
-        ci++;
-    }
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		concatenated[i] = s2[j];
+		i++;
+		j++;
+	}
 
-    conct[i] = '\0';
+	concatenated[i] = '\0';
 
-    return (conct);
+	return (concatenated);
 }
