@@ -1,46 +1,33 @@
 #include "main.h"
 
 /**
-
-read_textfile - reads a text file and prints the letters.
-
-This function reads a text file specified by the filename parameter and
-
-prints the specified number of letters from the file. It returns the
-
-number of letters printed. If it fails, it returns 0.
-
-@filename: The name of the text file to read.
-
-@letters: The number of letters to print.
-
-Return: The number of letters printed. If it fails, returns 0.
-*/
-ssize_t read_textfile(const char *filename, size_t letters)
+ * create_file - Creates a file.
+ * @filename: A pointer to the name of the file to create.
+ * @text_content: A pointer to a string to write to the file.
+ *
+ * Return: If the function fails - -1.
+ *         Otherwise - 1.
+ */
+int create_file(const char *filename, char *text_content)
 {
-int fd;
-ssize_t nrd, nwr;
-char *buf;
+	int fd, w, len = 0;
 
-if (!filename)
-return 0;
+	if (filename == NULL)
+		return (-1);
 
-fd = open(filename, O_RDONLY);
-if (fd == -1)
-return 0;
+	if (text_content != NULL)
+	{
+		for (len = 0; text_content[len];)
+			len++;
+	}
 
-buf = malloc(sizeof(char) * letters);
-if (!buf)
-{
-close(fd);
-return 0;
-}
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	w = write(fd, text_content, len);
 
-nrd = read(fd, buf, letters);
-nwr = write(STDOUT_FILENO, buf, nrd);
+	if (fd == -1 || w == -1)
+		return (-1);
 
-close(fd);
-free(buf);
+	close(fd);
 
-return nwr;
+	return (1);
 }
